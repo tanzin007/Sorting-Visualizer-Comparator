@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    
+    <div class="container">
+        <header>
+            <h1>Sorting Algorithm Visualizer</h1>
+            <p class="subtitle">Visualize how different sorting algorithms work with interactive controls. Fully functional offline!</p>
+        </header>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="arraySize">Array Size: <span id="arraySizeValue">25</span></label>
+                <input type="range" id="arraySize" min="5" max="100" value="25">
+            </div>
+            
+            <div class="control-group">
+                <label for="sortSpeed">Sort Speed: <span id="sortSpeedValue">Medium</span></label>
+                <input type="range" id="sortSpeed" min="1" max="5" value="3">
+            </div>
+            
+            <div class="control-group">
+                <label for="visualizationMode">Visualization Mode</label>
+                <select id="visualizationMode">
+                    <option value="bars">Bars (Height-based)</option>
+                    <option value="numbers">Raw Numbers</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm">Algorithm</label>
+                <select id="algorithm">
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="mergeSort">Merge Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="comparisonMode">Comparison Mode</label>
+                <select id="comparisonMode">
+                    <option value="single">Single Algorithm</option>
+                    <option value="compare">Compare Two Algorithms</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm2">Algorithm 2 (Comparison)</label>
+                <select id="algorithm2" disabled>
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="mergeSort">Merge Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                </select>
+            </div>
+            
+            <button id="generateArrayBtn">🔁 New Array</button>
+            <button id="sortBtn">▶️ Start Sorting</button>
+        </div>
+        
+        <div class="visualization-container">
+            <div class="single-mode" id="singleVisualization">
+                <div class="visualization">
+                    <div class="vis-header">
+                        <div class="algorithm-name">Bubble Sort</div>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-label">Operations</div>
+                                <div class="stat-value" id="operationsCount">0</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Time (ms)</div>
+                                <div class="stat-value" id="timeElapsed">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visual-area" id="visualizationArea"></div>
+                </div>
+            </div>
+            
+            <div class="comparison-mode hidden" id="comparisonVisualization">
+                <div class="visualization">
+                    <div class="vis-header">
+                        <div class="algorithm-name">Algorithm 1</div>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-label">Operations</div>
+                                <div class="stat-value" id="operationsCount1">0</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Time (ms)</div>
+                                <div class="stat-value" id="timeElapsed1">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visual-area" id="visualizationArea1"></div>
+                </div>
+                
+                <div class="visualization">
+                    <div class="vis-header">
+                        <div class="algorithm-name">Algorithm 2</div>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-label">Operations</div>
+                                <div class="stat-value" id="operationsCount2">0</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-label">Time (ms)</div>
+                                <div class="stat-value" id="timeElapsed2">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visual-area" id="visualizationArea2"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-section">
+            <div class="code-header">
+                <h3>Algorithm Implementation</h3>
+                <div class="code-controls">
+                    <select id="codeLanguage">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                    <button id="saveCodeBtn">💾 Save Code</button>
+                </div>
+            </div>
+            <textarea id="codeEditor" spellcheck="false"></textarea>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
